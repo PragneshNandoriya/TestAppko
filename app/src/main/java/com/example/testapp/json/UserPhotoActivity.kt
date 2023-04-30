@@ -21,6 +21,7 @@ class UserPhotoActivity : AppCompatActivity() {
         Log.e("UserPhotoActivity", "Oncreate")
         adapter = AdapterJSON()
         binding.recyclerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
+        binding.recyclerview.setHasFixedSize(true)
         binding.recyclerview.adapter = adapter
         binding.Abc.setOnClickListener {
             viewModel.getAPIData()
