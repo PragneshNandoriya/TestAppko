@@ -1,5 +1,6 @@
-package com.example.testapp.JSON
+package com.example.testapp.json
 
+import com.example.testapp.UserData
 import retrofit2.Response
 import retrofit2.Retrofit
 

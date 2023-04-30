@@ -1,4 +1,4 @@
-package com.example.testapp.JSON
+package com.example.testapp
 
 data class UserData(val userId: Long,
                     val id: Long,

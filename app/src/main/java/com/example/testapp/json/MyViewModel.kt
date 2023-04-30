@@ -1,9 +1,10 @@
-package com.example.testapp.JSON
+package com.example.testapp.json
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.testapp.UserData
 import kotlinx.coroutines.launch
 
 class MyViewModel : ViewModel() {

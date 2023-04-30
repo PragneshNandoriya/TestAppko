@@ -1,4 +1,4 @@
-package com.example.testapp.JSON
+package com.example.testapp.json
 
 sealed class ResponseKT<T>(val data: T? = null, val msg: String? = null) {
 
