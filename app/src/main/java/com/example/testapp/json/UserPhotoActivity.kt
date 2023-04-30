@@ -10,29 +10,40 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testapp.R
 import com.example.testapp.databinding.ActivityUserPhotoBinding
+import com.example.testapp.json.Paging.UserDataAdapter
 
 class UserPhotoActivity : AppCompatActivity() {
     val viewModel by viewModels<MyViewModel>()
-    var adapter: AdapterJSON? = null
+
+    ///  var adapter: AdapterJSON? = null
+    var adapter: UserDataAdapter? = null
     lateinit var binding: ActivityUserPhotoBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_photo)
         Log.e("UserPhotoActivity", "Oncreate")
-        adapter = AdapterJSON()
+        adapter = UserDataAdapter()
         binding.recyclerview.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         binding.recyclerview.setHasFixedSize(true)
         binding.recyclerview.adapter = adapter
+        /* binding.Abc.setOnClickListener {
+             viewModel.getAPIData()
+             viewModel.jsonphotdata.observe(this, Observer {
+                 Log.e("List", "Arraysize:" + it.size.toString())
+
+                 adapter?.userdatalist = it.asList()
+                 adapter?.notifyDataSetChanged()
+             })
+
+         }*/
         binding.Abc.setOnClickListener {
-            viewModel.getAPIData()
-            viewModel.jsonphotdata.observe(this, Observer {
-                Log.e("List", "Arraysize:" + it.size.toString())
-
-                adapter?.userdatalist = it.asList()
-                adapter?.notifyDataSetChanged()
-            })
-
+            viewModel.getUsersList()
         }
-
+        viewModel.userpagingData.observe(this, Observer {
+            adapter?.userdatalist = it.asList()
+            adapter?.notifyDataSetChanged()
+        })
     }
+
+
 }
